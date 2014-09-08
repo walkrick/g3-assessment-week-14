@@ -94,3 +94,17 @@ main {
     }
   }
 }
+section {
+  width: 20em;
+  border: 1px solid #ccc;
+  padding: 2em;
+  margin: 2em auto;
+  background: #efefef;
+
+
+
+  label {
+    display: inline-block;
+    width: 6em;
+  }
+}
