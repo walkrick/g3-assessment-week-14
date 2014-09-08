@@ -28,11 +28,12 @@ ActiveRecord::Schema.define(version: 20140908163151) do
   end
 
   create_table "prescriptions", force: true do |t|
-    t.string "medication"
-    t.string "dosage"
-    t.string "schedule"
-    t.date   "start_date"
-    t.date   "end_date"
+    t.integer "medication_id"
+    t.integer "patient_id"
+    t.string  "dosage"
+    t.string  "schedule"
+    t.date    "start_date"
+    t.date    "end_date"
   end
 
   create_table "users", force: true do |t|
