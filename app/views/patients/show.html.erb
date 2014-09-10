@@ -1,15 +1,28 @@
 <h1><%= full_name(@patient) %></h1>
 
 
-<h2>Prescriptions</h2><%= link_to "Add Prescription", new_patient_prescription_path(@patient)  %>
+<h2>Prescriptions</h2><%= link_to "Add Prescription", new_patient_prescription_path(@patient) %>
 
 <table class="table">
   <thead>
   <tr>
-    <th>Name</th>
+    <th>Medication</th>
+    <th>Schedule/Dosage</th>
+    <th>Dates</th>
+  </tr>
   </thead>
   <tbody>
+<% if @prescriptions != nil %>
+  <% @prescriptions.each do |prescription| %>
+
+<tr>
+<td><%= prescription.medication.name %></td>
+  <td><%= prescription.schedule %></td>
+  <td><%= prescription.start_date%> -  <%=prescription.end_date %></td>
 
 
+</tr>
+    <% end %>
+  <% end %>
   </tbody>
-  </tr>
+ </table>

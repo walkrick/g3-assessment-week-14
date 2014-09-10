@@ -1,9 +1,11 @@
-<h3>Add a prescription to </h3>
+<h3>Add a prescription to <%= full_name(@patient) %>
+    </h3>
 <section>
   <div>
-    <%= form_for :medications do |f| %>
+    <%= form_for [@patient, @prescription] do |f| %>
+
       <%= f.label "Medication  " %>
-      <%= f.select(:name, Medication.all.map { |p| [p.name, p.id] }, :prompt => "Please Choose a Medication") %>
+      <%= f.select(:medication_id, Medication.all.map { |p| [p.name, p.id] }, :prompt => "Please Choose a Medication") %>
       </div>
 
 
