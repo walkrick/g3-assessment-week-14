@@ -6,25 +6,22 @@ class PrescriptionsController < ApplicationController
     @medications = Medication.all
   end
 
-    def create
-      # @patient = Patient.find(params[:patient_id])
+  def create
+    # @patient = Patient.find(params[:patient_id])
 
-      @prescription = Prescription.new(allowed_parameters)
+    @prescription = Prescription.new(allowed_parameters)
 
-      @prescription.patient_id = params[:patient_id]
+    @prescription.patient_id = params[:patient_id]
 
-      if @prescription.save
-        flash[:notice] = "Your prescription has been created"
-        redirect_to "/"
-      else
-        @patient = Patient.find(params[:patient_id])
-        render :new
-      end
+    if @prescription.save
+      flash[:notice] = "Your prescription has been created"
+      redirect_to "/"
+    else
+      @patient = Patient.find(params[:patient_id])
+      render :new
     end
-
   end
-
-
+end
 
 
 private

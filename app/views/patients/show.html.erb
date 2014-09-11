@@ -1,5 +1,6 @@
-<h1><%= full_name(@patient) %></h1>
+<%= notice %>
 
+<h1><%= full_name(@patient) %></h1>
 
 <h2>Prescriptions</h2><%= link_to "Add Prescription", new_patient_prescription_path(@patient) %>
 
@@ -18,9 +19,7 @@
 <tr>
 <td><%= prescription.medication.name %></td>
   <td><%= prescription.schedule %></td>
-  <td><%= prescription.start_date%> -  <%=prescription.end_date %></td>
-
-
+  <td><%= prescription.start_date%> / <%=prescription.end_date %></td>
 </tr>
     <% end %>
   <% end %>
