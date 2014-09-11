@@ -4,7 +4,7 @@
   <div>
     <%= form_for [@patient, @prescription] do |f| %>
 
-      <% if @prescription.errors[:dosage].any? %>
+      <% if @prescription.errors.any? %>
         <h3 class="error">There was an error</h3>
 
           <% @prescription.errors.full_messages.each do |message| %>

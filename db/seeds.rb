@@ -15,6 +15,12 @@ other_user = User.create!(
   password: 'password',
   password_confirmation: 'password'
 )
+awesome_user = User.create!(
+  name: "Rick",
+  email: 'rick@example.com',
+  password: '1234',
+  password_confirmation: '1234'
+)
 
 Patient.create!(first_name: "Will", last_name: "Schuster")
 Patient.create!(first_name: "Sue", last_name: "Sylvester")
