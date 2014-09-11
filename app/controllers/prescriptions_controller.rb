@@ -9,7 +9,7 @@ class PrescriptionsController < ApplicationController
   def create
     # @patient = Patient.find(params[:patient_id])
 
-    @prescription = Prescription.new(allowed_parameters)
+    @prescription = current_user.prescriptions.new(allowed_parameters)
 
     @prescription.patient_id = params[:patient_id]
 
@@ -27,5 +27,5 @@ end
 private
 
 def allowed_parameters
-  params.require(:prescription).permit(:medication_id, :patient_id, :dosage, :schedule, :start_date, :end_date)
+  params.require(:prescription).permit(:medication_id, :patient_id, :dosage, :schedule, :start_date, :end_date, :user_id)
 end

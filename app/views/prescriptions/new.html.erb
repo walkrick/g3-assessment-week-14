@@ -1,18 +1,31 @@
 <h3>Add a prescription to <%= full_name(@patient) %>
-    </h3>
+</h3>
 <section>
   <div>
     <%= form_for [@patient, @prescription] do |f| %>
 
-      <%= f.label "Medication  " %>
-      <%= f.select(:medication_id, Medication.all.map { |p| [p.name, p.id] }, :prompt => "Please Choose a Medication") %>
-      </div>
+      <% if @prescription.errors[:dosage].any? %>
+        <h3 class="error">There was an error</h3>
 
+          <% @prescription.errors.full_messages.each do |message| %>
+            <li class="error"><%= message %></li>
+
+          <% end %>
+      <% end %>
+
+
+
+
+      <div>
+        <%= f.label "Medication  " %>
+        <%= f.select(:medication_id, Medication.all.map { |p| [p.name, p.id] }, :prompt => "Please Choose a Medication") %>
+      </div>
 
       <div>
         <%= f.label :dosage %>
         <%= f.text_field :dosage, autofocus: true, placeholder: "ex. 4 ml or 3 pills" %>
       </div>
+
       <div>
         <%= f.label :schedule %>
         <%= f.text_field :schedule, autofocus: true, placeholder: "ex. every 4 hours" %>
@@ -20,15 +33,19 @@
 
       <div>
         <%= f.label :start_date %>
-        <%= f.date_select :start_date %>
+        <%= f.date_select :start_date, :include_blank => true %>
       </div>
+
       <div>
         <%= f.label :end_date %>
-        <%= f.date_select :end_date %>
+        <%= f.date_select :end_date, :include_blank => true %>
       </div>
+
       <div>
         <%= f.submit "Create Prescription" %>
       </div>
 
+
     <% end %>
-    </section>
+
+</section>
