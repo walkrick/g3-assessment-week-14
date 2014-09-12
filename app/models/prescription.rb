@@ -8,7 +8,7 @@ class Prescription < ActiveRecord::Base
 
   validate :end_date_is_after_start_date
 
-
+ validates_format_of :dosage, with: /\A(?:[0-9]*)\s([a-z]*)\z/
   private
 
 
